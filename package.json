@@ -2,9 +2,10 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "prisma generate && prisma migrate deploy && remix build",
+    "build": "remix build",
     "dev": "remix dev",
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "vercel-build": "prisma generate && prisma migrate deploy && remix build"
   },
   "dependencies": {
     "@prisma/client": "^4.13.0",
