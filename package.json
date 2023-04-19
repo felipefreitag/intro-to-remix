@@ -5,6 +5,8 @@
     "build": "remix build",
     "dev": "remix dev",
     "tsc": "tsc",
+    "db:reset": "dropdb intro_to_remix && createdb intro_to_remix && npx prisma migrate dev",
+    "db:seed": "node --require esbuild-register prisma/seed.ts",
     "vercel-build": "prisma generate && prisma migrate deploy && remix build"
   },
   "dependencies": {
@@ -23,6 +25,7 @@
     "@remix-run/serve": "^1.15.0",
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
+    "esbuild-register": "^3.4.2",
     "eslint": "^8.38.0",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
