@@ -17,6 +17,7 @@ model User {
   imageUrl     String? @map("image_url")
   passwordHash String  @map("password_hash")
   barks        Bark[]
+  likesGiven   Int     @default(0)
 }
 
 model Bark {

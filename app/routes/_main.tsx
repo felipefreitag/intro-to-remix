@@ -30,6 +30,7 @@ export default () => {
           <div className="lg:flex lg:flex-1 lg:justify-end">
             {user ? (
               <div className="flex items-center gap-2">
+                <p>{user.likesGiven}</p>
                 <img
                   className="h-12 w-12 flex-none rounded-full bg-gray-50"
                   src={user.imageUrl || undefined}

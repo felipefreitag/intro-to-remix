@@ -67,6 +67,7 @@ export async function getUser(request: Request) {
         email: true,
         id: true,
         imageUrl: true,
+        likesGiven: true,
       },
     })
     return user

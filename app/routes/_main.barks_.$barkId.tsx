@@ -1,8 +1,33 @@
-import type { LoaderArgs } from '@remix-run/node'
-import { Link, useLoaderData } from '@remix-run/react'
+import { json, type ActionArgs, type LoaderArgs } from '@remix-run/node'
+import { Form, Link, useActionData, useLoaderData } from '@remix-run/react'
 import { db } from '~/db.server'
+import { getUser } from '~/session.server'
 
-export async function loader({ params }: LoaderArgs) {
+export async function action({ request }: ActionArgs) {
+  const user = await getUser(request)
+
+  if (!user) {
+    return json(
+      {
+        formError: `User not logged in`,
+      },
+      { status: 400 },
+    )
+  }
+
+  await db.user.update({
+    where: { id: user.id },
+    data: {
+      likesGiven: user?.likesGiven + 1,
+    },
+  })
+
+  return json({ liked: true }, { status: 200 })
+}
+
+export async function loader({ request, params }: LoaderArgs) {
+  const user = await getUser(request)
+
   const { barkId } = params
 
   if (barkId === undefined) {
@@ -22,11 +47,14 @@ export async function loader({ params }: LoaderArgs) {
     })
   }
 
-  return bark
+  return { bark, user }
 }
 
 function Bark() {
-  const bark = useLoaderData<typeof loader>()
+  const data = useLoaderData<typeof loader>()
+  const actionData = useActionData<typeof action>()
+
+  const { bark, user } = data
 
   return (
     <div className="mx-auto max-w-lg px-4 py-12 sm:px-6 md:py-16">
@@ -49,12 +77,21 @@ function Bark() {
             </p>
           </div>
         </div>
-        <Link
-          to={`/barks`}
-          className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-        >
-          Back
-        </Link>
+        <div className="flex flex-col gap-2">
+          {user && (
+            <Form method="post">
+              <button className="w-full rounded-full bg-indigo-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm ring-1 ring-inset hover:bg-indigo-800">
+                Like
+              </button>
+            </Form>
+          )}
+          <Link
+            to={`/barks`}
+            className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          >
+            Back
+          </Link>
+        </div>
       </div>
     </div>
   )
