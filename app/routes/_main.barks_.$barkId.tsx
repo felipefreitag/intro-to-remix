@@ -52,7 +52,6 @@ export async function loader({ request, params }: LoaderArgs) {
 
 function Bark() {
   const data = useLoaderData<typeof loader>()
-  const actionData = useActionData<typeof action>()
 
   const { bark, user } = data
 
