@@ -1,5 +1,5 @@
 import { json, type ActionArgs, type LoaderArgs } from '@remix-run/node'
-import { Form, Link, useLoaderData } from '@remix-run/react'
+import { Form, Link, useLoaderData, useNavigation } from '@remix-run/react'
 import { db } from '~/db.server'
 import { getUser } from '~/session.server'
 
@@ -52,6 +52,7 @@ export async function loader({ request, params }: LoaderArgs) {
 
 function Bark() {
   const data = useLoaderData<typeof loader>()
+  const navigation = useNavigation()
 
   const { bark, user } = data
 
@@ -79,7 +80,10 @@ function Bark() {
         <div className="flex flex-col gap-2">
           {user && (
             <Form method="post">
-              <button className="w-full rounded-full bg-indigo-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm ring-1 ring-inset hover:bg-indigo-800">
+              <button
+                disabled={navigation.state === 'submitting'}
+                className="w-full rounded-full bg-indigo-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm ring-1 ring-inset enabled:hover:bg-indigo-800 disabled:opacity-50"
+              >
                 Like
               </button>
             </Form>
