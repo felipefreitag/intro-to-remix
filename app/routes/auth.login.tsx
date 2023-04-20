@@ -1,6 +1,6 @@
 import type { ActionArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
-import { Link } from '@remix-run/react'
+import { Form, Link } from '@remix-run/react'
 import { createUserSession, login } from '~/session.server'
 
 const badRequest = (data: ActionData) => json(data, { status: 400 })
@@ -77,7 +77,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" method="post">
+          <Form className="space-y-6" method="post">
             <div>
               <label
                 htmlFor="email"
@@ -126,7 +126,7 @@ export default function Login() {
                 Fazer login
               </button>
             </div>
-          </form>
+          </Form>
 
           <div className="mt-10 text-center">
             <Link
