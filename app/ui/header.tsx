@@ -1,12 +1,5 @@
 import { Link } from '@remix-run/react'
 
-const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
-]
-
 export default function Example() {
   return (
     <header className="bg-white">
