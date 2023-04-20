@@ -1,10 +1,5 @@
 import { json } from '@remix-run/node'
-import {
-  Link,
-  useLoaderData,
-  useMatches,
-  type V2_MetaFunction,
-} from '@remix-run/react'
+import { Link, useLoaderData, type V2_MetaFunction } from '@remix-run/react'
 import { db } from '~/db.server'
 
 export const meta: V2_MetaFunction = () => {
@@ -22,8 +17,6 @@ export async function loader() {
 
 export default function Index() {
   const data = useLoaderData<typeof loader>()
-  const matches = useMatches()
-  console.log('🚀 ~ file: barks.tsx:21 ~ Index ~ matches:', matches)
 
   return (
     <div className="mx-auto max-w-lg px-4 py-12 sm:px-6 md:py-16">
