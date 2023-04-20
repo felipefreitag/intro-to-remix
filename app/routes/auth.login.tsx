@@ -1,4 +1,69 @@
+import type { ActionArgs } from '@remix-run/node'
+import { json } from '@remix-run/node'
 import { Link } from '@remix-run/react'
+import { createUserSession, login } from '~/session.server'
+
+const badRequest = (data: ActionData) => json(data, { status: 400 })
+
+type ActionData = {
+  formError?: string
+  fieldErrors?: {
+    email: string | undefined
+    password: string | undefined
+  }
+  fields?: {
+    email: string
+    password: string
+  }
+}
+
+function validateEmail(email: unknown) {
+  if (typeof email !== 'string' || email.length < 3) {
+    return `Emails must be at least 3 characters long`
+  }
+}
+
+function validatePassword(password: unknown) {
+  if (typeof password !== 'string' || password.length < 6) {
+    return `Passwords must be at least 6 characters long`
+  }
+}
+
+export async function action({ request }: ActionArgs) {
+  const form = await request.formData()
+  const email = form.get('email')
+  const password = form.get('password')
+  const redirectTo = form.get('redirectTo') || '/barks'
+
+  if (
+    typeof email !== 'string' ||
+    typeof password !== 'string' ||
+    typeof redirectTo !== 'string'
+  ) {
+    console.log('types error')
+    return badRequest({
+      formError: `Form not submitted correctly.`,
+    })
+  }
+
+  const fields = { email, password }
+  const fieldErrors = {
+    email: validateEmail(email),
+    password: validatePassword(password),
+  }
+  if (Object.values(fieldErrors).some(Boolean))
+    return badRequest({ fieldErrors, fields })
+
+  const user = await login({ email, password })
+
+  if (!user) {
+    return badRequest({
+      fields,
+      formError: `Email/Password combination is incorrect`,
+    })
+  }
+  return createUserSession(user.id, redirectTo)
+}
 
 export default function Login() {
   return (
@@ -12,7 +77,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" method="post">
             <div>
               <label
                 htmlFor="email"
