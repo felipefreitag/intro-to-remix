@@ -11,11 +11,12 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  email    String  @unique
-  name     String?
-  imageUrl String? @map("image_url")
-  barks    Bark[]
+  id           Int     @id @default(autoincrement())
+  email        String  @unique
+  name         String?
+  imageUrl     String? @map("image_url")
+  passwordHash String  @map("password_hash")
+  barks        Bark[]
 }
 
 model Bark {

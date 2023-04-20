@@ -22,16 +22,22 @@ function getDogs() {
       name: 'Pistache',
       email: 'pistache@dog.com',
       imageUrl: 'https://source.unsplash.com/random/250×250/?dog',
+      passwordHash:
+        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
     },
     {
       name: 'Bolinha',
       email: 'bolinha@dog.com',
       imageUrl: 'https://source.unsplash.com/random/250×250/?dog',
+      passwordHash:
+        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
     },
     {
       name: 'Caju',
       email: 'caju@dog.com',
       imageUrl: 'https://source.unsplash.com/random/250×250/?dog',
+      passwordHash:
+        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
     },
   ]
 }
