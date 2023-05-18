@@ -21,23 +21,23 @@ function getDogs() {
     {
       name: 'Pistache',
       email: 'pistache@dog.com',
-      imageUrl: 'https://source.unsplash.com/random/250×250/?dog',
+      imageUrl: 'https://i.ibb.co/mbpsM98/IMG-20221029-065935613.jpg',
       passwordHash:
-        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
+        '$2a$04$vrndGifAjWIpW.oSIACmLuIOmPvkOfZDUVeih/Bi3nmEg2gs9l6mK',
     },
     {
       name: 'Bolinha',
       email: 'bolinha@dog.com',
-      imageUrl: 'https://source.unsplash.com/random/250×250/?dog',
+      imageUrl: 'https://i.ibb.co/Gsft7WP/dog1.jpg',
       passwordHash:
-        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
+        '$2a$04$vrndGifAjWIpW.oSIACmLuIOmPvkOfZDUVeih/Bi3nmEg2gs9l6mK',
     },
     {
       name: 'Caju',
       email: 'caju@dog.com',
-      imageUrl: 'https://source.unsplash.com/random/250×250/?dog',
+      imageUrl: 'https://i.ibb.co/qyZVCG4/dog2.jpg',
       passwordHash:
-        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
+        '$2a$04$vrndGifAjWIpW.oSIACmLuIOmPvkOfZDUVeih/Bi3nmEg2gs9l6mK',
     },
   ]
 }

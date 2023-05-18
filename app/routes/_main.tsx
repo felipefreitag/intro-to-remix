@@ -22,7 +22,7 @@ export default () => {
         >
           <div className="flex lg:flex-1">
             <Link to="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Latidor</span>
+              <span className="sr-only">InstaDog</span>
               <img className="h-8 w-auto" src="/dog.png" alt="" />
             </Link>
           </div>

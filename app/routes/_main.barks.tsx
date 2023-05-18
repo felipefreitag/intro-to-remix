@@ -3,7 +3,7 @@ import { Link, useLoaderData, type V2_MetaFunction } from '@remix-run/react'
 import { db } from '~/db.server'
 
 export const meta: V2_MetaFunction = () => {
-  return [{ title: 'Latidor' }, { description: 'O app para doguitos' }]
+  return [{ title: 'InstaDog' }, { description: 'O app para doguitos' }]
 }
 
 export async function loader() {
