@@ -4,7 +4,7 @@ import {
   type LoaderArgs,
   redirect,
 } from '@remix-run/node'
-import { Form, Link, useLoaderData, useNavigation } from '@remix-run/react'
+import { Form, Link, useNavigation } from '@remix-run/react'
 import { db } from '~/db.server'
 import { getUser } from '~/session.server'
 
@@ -20,30 +20,6 @@ export async function action({ request, params }: ActionArgs) {
     )
   }
 
-  const { barkId } = params
-
-  if (barkId === undefined) {
-    throw new Response('Not Found', {
-      status: 404,
-    })
-  }
-
-  const bark = await db.bark.findUnique({
-    where: { id: parseInt(barkId) },
-  })
-
-  if (!bark) {
-    throw new Response('Not Found', {
-      status: 404,
-    })
-  }
-
-  if (bark.authorId !== user.id) {
-    throw new Response('Not author', {
-      status: 401,
-    })
-  }
-
   const form = await request.formData()
   const content = form.get('content')
 
@@ -53,9 +29,8 @@ export async function action({ request, params }: ActionArgs) {
     })
   }
 
-  await db.bark.update({
-    where: { id: parseInt(barkId) },
-    data: { content },
+  const bark = await db.bark.create({
+    data: { content, authorId: user.id },
   })
 
   return redirect(`/barks/${bark.id}`)
@@ -64,45 +39,23 @@ export async function action({ request, params }: ActionArgs) {
 export async function loader({ request, params }: LoaderArgs) {
   const user = await getUser(request)
 
-  const { barkId } = params
-
-  if (barkId === undefined) {
-    throw new Response('Not Found', {
-      status: 404,
-    })
+  if (!user) {
+    throw redirect('/barks')
   }
 
-  const bark = await db.bark.findUnique({
-    where: { id: parseInt(barkId) },
-    include: { author: true },
-  })
-
-  if (!bark) {
-    throw new Response('Not Found', {
-      status: 404,
-    })
-  }
-
-  if (bark.authorId !== user?.id) {
-    throw redirect(`/barks/${bark.id}`)
-  }
-
-  return { bark }
+  return null
 }
 
 function Bark() {
-  const data = useLoaderData<typeof loader>()
   const navigation = useNavigation()
-
-  const { bark } = data
 
   return (
     <>
       <div className="flex justify-between">
-        <h1 className="text-bold text-lg">Editar</h1>
+        <h1 className="text-bold text-lg">Novo latido</h1>
         <Link
-          to={`/barks/${bark.id}`}
-          className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          to={`/barks`}
+          className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +87,6 @@ function Bark() {
                 <textarea
                   id="content"
                   name="content"
-                  defaultValue={bark.content}
                   rows={5}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

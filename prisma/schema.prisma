@@ -21,8 +21,9 @@ model User {
 }
 
 model Bark {
-  id       Int    @id @default(autoincrement())
-  content  String
-  authorId Int    @map("author_id")
-  author   User   @relation(fields: [authorId], references: [id])
+  id        Int      @id @default(autoincrement())
+  content   String
+  authorId  Int      @map("author_id")
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
 }
