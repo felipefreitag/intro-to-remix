@@ -17,7 +17,7 @@ export default () => {
     <>
       <header className="bg-white">
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between border-b p-6 lg:px-8"
           aria-label="Global"
         >
           <div className="flex lg:flex-1">
@@ -56,7 +56,9 @@ export default () => {
           </div>
         </nav>
       </header>
-      <Outlet />
+      <div className="mx-auto max-w-lg px-4 py-12 sm:px-6 md:py-10">
+        <Outlet />
+      </div>
     </>
   )
 }

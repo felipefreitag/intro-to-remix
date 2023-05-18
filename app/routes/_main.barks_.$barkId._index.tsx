@@ -57,28 +57,26 @@ function Bark() {
   const { bark, user } = data
 
   return (
-    <div className="mx-auto max-w-lg px-4 py-12 sm:px-6 md:py-16">
-      <div
-        key={bark.author.email}
-        className="flex items-start justify-between gap-x-6 py-5"
-      >
-        <div className="flex gap-x-4">
-          <img
-            className="h-12 w-12 flex-none rounded-full bg-gray-50"
-            src={bark.author.imageUrl || undefined}
-            alt="avatar"
-          />
-          <div className="min-w-0 flex-auto">
-            <p className="text-sm font-semibold leading-6 text-gray-900">
-              {bark.author.name}
-            </p>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              {bark.content}
-            </p>
-          </div>
+    <div
+      key={bark.author.email}
+      className="flex items-start justify-between gap-x-6 py-5"
+    >
+      <div className="flex gap-x-4">
+        <img
+          className="h-12 w-12 flex-none rounded-full bg-gray-50"
+          src={bark.author.imageUrl || undefined}
+          alt="avatar"
+        />
+        <div className="min-w-0 flex-auto">
+          <p className="text-sm font-semibold leading-6 text-gray-900">
+            {bark.author.name}
+          </p>
+          <p className="mt-1 text-sm leading-6 text-gray-600">{bark.content}</p>
         </div>
-        <div className="flex flex-col gap-2">
-          {user && (
+      </div>
+      <div className="flex flex-col gap-2">
+        {user && (
+          <>
             <Form method="post">
               <button
                 disabled={navigation.state === 'submitting'}
@@ -100,27 +98,48 @@ function Bark() {
                 </svg>
               </button>
             </Form>
-          )}
-          <Link
-            to={`/barks`}
-            className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+            {user.id === bark.authorId && (
+              <Link
+                to={`edit`}
+                className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="h-4 w-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
+                  />
+                </svg>
+              </Link>
+            )}
+          </>
+        )}
+        <Link
+          to={`/barks`}
+          className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="h-4 w-4"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="h-4 w-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
-              />
-            </svg>
-          </Link>
-        </div>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+            />
+          </svg>
+        </Link>
       </div>
     </div>
   )
