@@ -18,6 +18,7 @@ model User {
   passwordHash String  @map("password_hash")
   barks        Bark[]
   likesGiven   Int     @default(0)
+  Like         Like[]
 }
 
 model Bark {
@@ -25,5 +26,15 @@ model Bark {
   content   String
   authorId  Int      @map("author_id")
   author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now()) @map("created_at")
+  Like      Like[]
+}
+
+model Like {
+  id        Int      @id @default(autoincrement())
+  barkId    Int      @map("bark_id")
+  bark      Bark     @relation(fields: [barkId], references: [id])
+  userId    Int      @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now()) @map("created_at")
 }

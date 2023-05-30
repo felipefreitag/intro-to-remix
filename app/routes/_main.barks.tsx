@@ -56,7 +56,7 @@ export default function Index() {
       <ul className="divide-y divide-gray-100 overflow-y-scroll">
         {barks.map((bark) => (
           <li
-            key={bark.author.email}
+            key={bark.id}
             className="flex items-start justify-between gap-x-6 py-5"
           >
             <div className="flex gap-x-4">
