@@ -1,5 +1,5 @@
 import { json, type ActionArgs, type LoaderArgs } from '@remix-run/node'
-import { Form, Link, useLoaderData } from '@remix-run/react'
+import { Form, Link, useLoaderData, useNavigation } from '@remix-run/react'
 import { db } from '~/db.server'
 import { getUser } from '~/session.server'
 
@@ -86,16 +86,24 @@ export async function loader({ request, params }: LoaderArgs) {
     },
   })
 
-  return { bark, user, like }
+  return { bark, user, liked: like !== null }
 }
 
 function Bark() {
   const data = useLoaderData<typeof loader>()
+  const navigation = useNavigation()
 
-  const { bark, user, like } = data
+  const { bark, user, liked } = data
 
-  const buttonCollor =
-    like !== null ? 'bg-indigo-600 text-white hover:bg-indigo-800' : ''
+  let optimisticLike = liked
+
+  if (navigation.formData) {
+    optimisticLike = navigation.formData.get('liked') === 'true'
+  }
+
+  const buttonCollor = optimisticLike
+    ? 'bg-indigo-600 text-white hover:bg-indigo-800'
+    : ''
 
   return (
     <div
@@ -158,6 +166,7 @@ function Bark() {
                     />
                   </svg>
                   <input type="hidden" value={bark.id} name="barkId" />
+                  <input type="hidden" value={String(!liked)} name="liked" />
                 </button>
               </Form>
             )}
