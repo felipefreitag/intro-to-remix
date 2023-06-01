@@ -3,20 +3,16 @@ import { useCurrentIndex } from '~/useCurrentIndex'
 
 export default () => {
   const navigate = useNavigate()
-  const currentIndex = useCurrentIndex()
-  const MIN_SLIDE = 1
-  const MAX_SLIDE = 2
-  const prevIndex = Math.max(Number(currentIndex) - 1, MIN_SLIDE)
-  const nextIndex = Math.min(Number(currentIndex) + 1, MAX_SLIDE)
+  const { previousIndex, nextIndex } = useCurrentIndex()
 
   return (
     <div
       tabIndex={0}
-      aria-label="Left navigates back, right navigates to the next slide"
+      aria-label="Left navigates to the previous slide, right navigates to the next slide"
       onKeyDown={(event) => {
-        if (event.key === 'ArrowLeft') {
-          navigate(`/presentation/${prevIndex}`)
-        } else if (event.key === 'ArrowRight') {
+        if (['ArrowLeft', 'ArrowUp', 'Backspace'].includes(event.key)) {
+          navigate(`/presentation/${previousIndex}`)
+        } else if (['ArrowRight', 'ArrowDown', 'Enter'].includes(event.key)) {
           navigate(`/presentation/${nextIndex}`)
         } else return
       }}
