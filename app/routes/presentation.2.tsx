@@ -1,53 +1,27 @@
+import ExternalLink from '~/ui/external-link'
+
 export default function Index() {
   return (
     <div className="pt-32">
       <div className="flex justify-center gap-40 lg:pt-40">
         <div>
-          <h2 className="text-2xl leading-8 text-gray-900">Felipe Freitag</h2>
-          <p className="mt-6 text-xl text-gray-900">
+          <h2 className="text-4xl leading-8 text-gray-900">Felipe Freitag</h2>
+          <p className="mt-6 text-3xl text-gray-600">
             Fundador e DX na seasoned.cc
           </p>
-          <ul>
-            <li className="pt-6">
-              <a
-                href="https://dev.to/felipefreitag"
-                target="_blank"
-                className="mt-6 text-xl text-gray-600"
-                rel="noreferrer"
-              >
-                dev.to
-              </a>
-            </li>
-            <li className="pt-6">
-              <a
-                href="https://linkedin.com/in/felipefreitag/"
-                target="_blank"
-                className="mt-6 text-xl text-gray-600"
-                rel="noreferrer"
-              >
-                github felipefreitag
-              </a>
-            </li>
-            <li className="pt-6">
-              <a
-                href="https://twitter.com/@felipefreitag2"
-                target="_blank"
-                className="mt-6 text-xl text-gray-600"
-                rel="noreferrer"
-              >
-                twitter @felipefreitag2
-              </a>
-            </li>
-            <li className="pt-6">
-              <a
-                href="https://linkedin.com/in/felipefreitag/"
-                target="_blank"
-                className="mt-6 text-xl text-gray-600"
-                rel="noreferrer"
-              >
-                linkedin felipefreitag
-              </a>
-            </li>
+          <ul className="list-disc pl-6">
+            <ExternalLink href="https://dev.to/felipefreitag">
+              dev.to
+            </ExternalLink>
+            <ExternalLink href="https://github.com/felipefreitag">
+              github felipefreitag
+            </ExternalLink>
+            <ExternalLink href="https://linkedin.com/in/felipefreitag/">
+              linkedin felipefreitag
+            </ExternalLink>
+            <ExternalLink href="https://twitter.com/@felipefreitag2">
+              twitter @felipefreitag2
+            </ExternalLink>
           </ul>
         </div>
 
