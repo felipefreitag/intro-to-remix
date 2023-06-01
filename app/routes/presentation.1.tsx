@@ -1,8 +1,4 @@
-import { useNavigate } from '@remix-run/react'
-
 export default function Index() {
-  const navigate = useNavigate()
-
   return (
     <div>
       <div className="relative isolate px-6 pt-14 lg:px-8">
