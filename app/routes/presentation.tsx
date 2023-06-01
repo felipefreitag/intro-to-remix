@@ -1,4 +1,5 @@
 import { Outlet, useNavigate } from '@remix-run/react'
+import Footer from '~/footer'
 import { useCurrentIndex } from '~/useCurrentIndex'
 
 export default () => {
@@ -30,7 +31,10 @@ export default () => {
           }}
         />
       </div>
-      <Outlet />
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   )
 }
