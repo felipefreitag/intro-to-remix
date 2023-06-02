@@ -1,7 +1,7 @@
 export default function Index() {
   return (
-    <div className="px-6 pt-32 lg:px-8">
-      <div className="flex justify-center gap-0">
+    <div className="p-8 px-6 md:pt-32 lg:px-8">
+      <div className="flex flex-col justify-center gap-0 md:flex-row">
         <div className="max-w-xl">
           <div className="px-10">
             <h2 className="title">O que é</h2>
@@ -14,7 +14,7 @@ export default function Index() {
           </div>
         </div>
         <img
-          className="max-w-2xl rounded border"
+          className="mt-4 w-full rounded border md:mt-0 md:max-w-2xl"
           src="/what-is-remix.png"
           alt="what is remix schematics"
         />

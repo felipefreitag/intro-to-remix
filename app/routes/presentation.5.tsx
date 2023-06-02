@@ -1,9 +1,11 @@
 export default function Index() {
   return (
     <div className="pt-32">
-      <div className="flex justify-center gap-40 lg:pt-40">
+      <div className="flex justify-center md:gap-40 lg:pt-40">
         <div className="max-w-xl">
-          <h2 className="text-xl leading-8 text-gray-900">Seasoned</h2>
+          <h2 className="text-lg leading-8 text-gray-900 md:text-4xl">
+            Seasoned
+          </h2>
           <ul className="list-disc pl-6">
             <li className="li-primary">Stack legado: CRA + Rails + Postgres</li>
             <li className="li-primary">Melhor DX leva a uma melhor UX</li>
@@ -19,8 +21,8 @@ export default function Index() {
         <div>
           <img
             src="/seasoned-logo.png"
-            className="h-48 w-48 rounded-full border p-4 leading-none"
-            alt="Felipe Freitag"
+            className="side-img md:p-4"
+            alt="Seasoned"
           />
         </div>
       </div>

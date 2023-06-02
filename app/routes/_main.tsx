@@ -41,7 +41,7 @@ export default () => {
             </Link>
             <Link
               to={`/presentation/${latestSlide}`}
-              className="ml-8 rounded border px-4 py-2 text-lg text-gray-600"
+              className="ml-2 rounded border px-4 py-2 text-sm text-gray-600 md:ml-8 md:text-lg"
             >
               <button>SLIDES</button>
             </Link>

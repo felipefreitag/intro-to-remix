@@ -96,12 +96,12 @@ export default function Footer() {
           </>
         )}
         <div className="flex items-baseline border-t border-gray-900/10 pt-4">
-          <p className="mr-auto leading-5 text-gray-500">
+          <p className="mr-auto text-xs leading-5 text-gray-500 md:text-base">
             Felipe Freitag - felipe@seasoned.cc - Junho 2023
           </p>
           <Link
             to="/barks"
-            className="mr-8 rounded border px-4 py-2 text-lg text-gray-600"
+            className="mr-2 rounded border px-4 py-2 text-xs text-gray-600 md:mr-8 md:text-base"
             onClick={() => {
               document.cookie = ''
               document.cookie = `latest_slide=${currentIndex}`

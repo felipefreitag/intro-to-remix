@@ -1,8 +1,8 @@
 export default function Index() {
   return (
-    <div className="px-6 pt-32 lg:px-8">
+    <div className="px-6 pt-4 md:pt-32 lg:px-8">
       <div className="px-10">
-        <h2 className="title mb-10">Principais funcionalidades</h2>
+        <h2 className="title mb-4 md:mb-10">Principais funcionalidades</h2>
         <ul className="list-disc pl-6">
           <li className="li-primary">Rotas aninhadas</li>
           <li className="li-primary">

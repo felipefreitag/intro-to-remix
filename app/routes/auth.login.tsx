@@ -133,7 +133,7 @@ export default function Login() {
 
           <div className="mt-10 text-center">
             <Link
-              to="/"
+              to="/barks"
               className="text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
               Voltar para home

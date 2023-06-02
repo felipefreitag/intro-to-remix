@@ -3,14 +3,14 @@ import ExternalLink from '~/ui/external-link'
 export default function Index() {
   return (
     <div className="pt-32">
-      <div className="flex justify-center gap-40 lg:pt-40">
+      <div className="flex justify-center md:gap-40 lg:pt-40">
         <div className="max-w-xl">
-          <h2 className="text-4xl leading-8 text-gray-900">
+          <h2 className="text-lg leading-8 text-gray-900 md:text-4xl">
             <span onClick={() => alert('Sísând, seasonédi, seasonêd...')}>
               Seasoned
             </span>
           </h2>
-          <p className="mt-6 text-3xl text-gray-600">
+          <p className="mt-6 text-base text-gray-600 md:text-3xl">
             Dev shop fundada em 2018
           </p>
           <ul className="list-disc pl-6">
@@ -27,8 +27,8 @@ export default function Index() {
         <div>
           <img
             src="/seasoned-logo.png"
-            className="h-48 w-48 rounded-full border p-4 leading-none"
-            alt="Seasoned logo"
+            className="side-img md:p-4"
+            alt="Seasoned"
           />
         </div>
       </div>

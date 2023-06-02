@@ -2,8 +2,8 @@ import ExternalLink from '~/ui/external-link'
 
 export default function Index() {
   return (
-    <div className="px-6 pt-32 lg:px-8">
-      <div className="px-10">
+    <div className="pt-32 md:px-6 lg:px-8">
+      <div className="md:px-10">
         <h2 className="title mb-10">Agenda</h2>
         <ul className="list-disc pl-6">
           <li className="li-primary">Por que</li>

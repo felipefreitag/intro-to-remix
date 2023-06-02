@@ -4,18 +4,22 @@
 
 @layer components {
   .title {
-    @apply text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl
+    @apply text-xl font-bold tracking-tight text-gray-900 sm:text-6xl
   }
 
   .link {
     text-decoration: underline
   }
 
+  .side-img {
+    @apply aspect-square w-32 rounded-full border leading-none md:h-48 md:w-48
+  }
+
   .subtitle {
-    @apply mt-6 text-3xl leading-8 text-gray-600
+    @apply mt-2 md:mt-6 text-lg md:text-3xl leading-8 text-gray-600
   }
 
   .li-primary {
-    @apply mt-6 text-3xl leading-8 text-gray-600
+    @apply mt-2 md:mt-6 text-base md:text-3xl leading-8 text-gray-600
   }
 }
