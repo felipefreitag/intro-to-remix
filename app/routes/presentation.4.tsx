@@ -27,7 +27,7 @@ export default function Index() {
         <div>
           <img
             src="/seasoned-logo.png"
-            className="h-48 w-48 rounded-full leading-none"
+            className="h-48 w-48 rounded-full border p-4 leading-none"
             alt="Seasoned logo"
           />
         </div>

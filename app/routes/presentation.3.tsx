@@ -1,3 +1,5 @@
+import ExternalLink from '~/ui/external-link'
+
 export default function Index() {
   return (
     <div className="px-6 pt-32 lg:px-8">
@@ -8,6 +10,12 @@ export default function Index() {
           <li className="li-primary">O que é o Remix</li>
           <li className="li-primary">Principais funcionalidades</li>
           <li className="li-primary">Experiência na Seasoned</li>
+          <ExternalLink href="https://github.com/felipefreitag/intro-to-remix">
+            https://github.com/felipefreitag/intro-to-remix
+          </ExternalLink>
+          <ExternalLink href="https://intro-to-remix.vercel.app">
+            https://intro-to-remix.vercel.app
+          </ExternalLink>
         </ul>
       </div>
     </div>

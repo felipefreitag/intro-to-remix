@@ -14,7 +14,7 @@ export default function Index() {
           </div>
         </div>
         <img
-          className="max-w-2xl"
+          className="max-w-2xl rounded border"
           src="/what-is-remix.png"
           alt="what is remix schematics"
         />

@@ -33,7 +33,7 @@ export default function Index() {
         <div>
           <img
             src="/avatar-seasoned.jpeg"
-            className="h-48 w-48 rounded-full leading-none"
+            className="h-48 w-48 rounded-full border leading-none"
             alt="Felipe Freitag"
           />
         </div>
