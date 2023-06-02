@@ -52,7 +52,7 @@ export default function App() {
       </head>
       <body>
         <Outlet />
-        <ScrollRestoration />
+        <ScrollRestoration getKey={(location) => location.pathname} />
         <Scripts />
         <LiveReload />
       </body>

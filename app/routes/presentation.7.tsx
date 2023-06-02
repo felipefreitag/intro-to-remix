@@ -7,9 +7,9 @@ export default function Index() {
 
           <ul className="list-disc pl-6">
             <li className="li-primary">Faz tudo que a web pode fazer</li>
+            <li className="li-primary">Histórico do React Router</li>
             <li className="li-primary">Fundação sólida</li>
             <li className="li-primary">Stack simplificada</li>
-            <li className="li-primary">Histórico do React Router</li>
             <li className="li-primary">Produtividade</li>
           </ul>
         </div>

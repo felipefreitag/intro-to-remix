@@ -1,6 +1,7 @@
 import type { LoaderArgs } from '@remix-run/node'
 import { Form, Link, Outlet, useLoaderData } from '@remix-run/react'
 import { getUser } from '~/session.server'
+import { useHydrated } from 'remix-utils'
 
 export async function loader({ request }: LoaderArgs) {
   const user = await getUser(request)
@@ -10,6 +11,15 @@ export async function loader({ request }: LoaderArgs) {
 
 export default () => {
   const data = useLoaderData<typeof loader>()
+  const isHydrated = useHydrated()
+
+  let latestSlide = '1'
+  if (isHydrated) {
+    const cookies = Object.fromEntries(
+      document.cookie.split('; ').map((x) => x.split('=')),
+    )
+    latestSlide = cookies.latest_slide || '1'
+  }
 
   const user = data?.user
 
@@ -17,13 +27,23 @@ export default () => {
     <>
       <header className="bg-white">
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between border-b p-6 lg:px-8"
+          className="mx-auto flex max-w-7xl items-baseline justify-between border-b p-6 lg:px-8"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
-            <Link to="/" className="-m-1.5 p-1.5">
+          <div className="flex items-baseline gap-4">
+            <Link to="/" className="">
               <span className="sr-only">InstaDog</span>
-              <img className="h-8 w-auto" src="/dog.png" alt="" />
+              <img
+                className="-mb-2 w-8 leading-none"
+                src="/dog.png"
+                alt="logo"
+              />
+            </Link>
+            <Link
+              to={`/presentation/${latestSlide}`}
+              className="ml-8 rounded border px-4 py-2 text-lg text-gray-600"
+            >
+              <button>SLIDES</button>
             </Link>
           </div>
 

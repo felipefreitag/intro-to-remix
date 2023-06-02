@@ -95,10 +95,19 @@ export default function Footer() {
             </Link>
           </>
         )}
-        <div className="flex justify-between border-t border-gray-900/10 pt-8">
-          <p className="leading-5 text-gray-500">
+        <div className="flex items-baseline border-t border-gray-900/10 pt-4">
+          <p className="mr-auto leading-5 text-gray-500">
             Felipe Freitag - felipe@seasoned.cc - Junho 2023
           </p>
+          <Link
+            to="/barks"
+            className="mr-8 rounded border px-4 py-2 text-lg text-gray-600"
+            onClick={() => {
+              document.cookie = `latest_slide=${currentIndex}`
+            }}
+          >
+            <button>DEMO</button>
+          </Link>
           <p className="text-gray-500">{currentIndex}</p>
         </div>
       </div>
