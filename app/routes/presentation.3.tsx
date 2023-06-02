@@ -6,7 +6,7 @@ export default function Index() {
         <ul className="list-disc pl-6">
           <li className="li-primary">Por que</li>
           <li className="li-primary">O que é o Remix</li>
-          <li className="li-primary">Funcionalidades principais</li>
+          <li className="li-primary">Principais funcionalidades</li>
           <li className="li-primary">Experiência na Seasoned</li>
         </ul>
       </div>

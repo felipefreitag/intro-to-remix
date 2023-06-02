@@ -6,7 +6,7 @@ const useCurrentIndex = () => {
   const currentIndex = Number(currentRoute.id.split('.')[1])
 
   const MIN_SLIDE = 1
-  const MAX_SLIDE = 18
+  const MAX_SLIDE = 22
   const previousIndex = Math.max(currentIndex - 1, MIN_SLIDE)
   const nextIndex = Math.min(currentIndex + 1, MAX_SLIDE)
 

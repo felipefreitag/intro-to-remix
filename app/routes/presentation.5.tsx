@@ -1,14 +1,28 @@
 export default function Index() {
   return (
-    <div className="px-6 pt-32 lg:px-8">
-      <div className="px-10">
-        <h2 className="title">O que é</h2>
-        <ul className="list-disc pl-6">
-          <li className="li-primary">Compilador</li>
-          <li className="li-primary">Server-side HTTP handler</li>
-          <li className="li-primary">Server framework</li>
-          <li className="li-primary">Browser framework</li>
-        </ul>
+    <div className="pt-32">
+      <div className="flex justify-center gap-40 lg:pt-40">
+        <div className="max-w-xl">
+          <h2 className="text-4xl leading-8 text-gray-900">Seasoned</h2>
+          <ul className="list-disc pl-6">
+            <li className="li-primary">
+              Bastante conservadores com decisões técnicas
+            </li>
+            <li className="li-primary">Stack legado: CRA + Rails + Postgres</li>
+            <li className="li-primary">Melhor DX leva a uma melhor UX</li>
+            <li className="li-primary">
+              Para nós, Remix foi uma transformação
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <img
+            src="/seasoned-logo.png"
+            className="h-48 w-48 rounded-full leading-none "
+            alt="Felipe Freitag"
+          />
+        </div>
       </div>
     </div>
   )
