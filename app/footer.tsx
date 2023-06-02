@@ -103,6 +103,7 @@ export default function Footer() {
             to="/barks"
             className="mr-8 rounded border px-4 py-2 text-lg text-gray-600"
             onClick={() => {
+              document.cookie = ''
               document.cookie = `latest_slide=${currentIndex}`
             }}
           >
