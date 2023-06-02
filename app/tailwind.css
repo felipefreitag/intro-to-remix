@@ -12,7 +12,7 @@
   }
 
   .side-img {
-    @apply aspect-square w-32 rounded-full border leading-none md:h-48 md:w-48
+    @apply aspect-square w-32 rounded-full border leading-none md:w-48
   }
 
   .subtitle {
