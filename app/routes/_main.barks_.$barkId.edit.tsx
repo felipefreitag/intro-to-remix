@@ -13,6 +13,7 @@ import {
 } from '@remix-run/react'
 import { db } from '~/db.server'
 import { getUser } from '~/session.server'
+import BackIcon from '~/ui/back-icon'
 
 export async function action({ request, params }: ActionArgs) {
   const user = await getUser(request)
@@ -111,20 +112,7 @@ function Bark() {
           to={`/barks/${bark.id}`}
           className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-4 w-4"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
-            />
-          </svg>
+          <BackIcon />
         </Link>
       </div>
       <div className="flex min-h-full flex-1 flex-col justify-center">
